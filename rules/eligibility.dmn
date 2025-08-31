@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" name="FoodReliefEligibility" id="dmn_elig_001">
+  <decision id="eligibleServices" name="Eligible Services">
+    <decisionTable hitPolicy="COLLECT">
+      <input id="i1"><inputExpression typeRef="string">postcode</inputExpression></input>
+      <input id="i2"><inputExpression typeRef="string">language</inputExpression></input>
+      <input id="i3"><inputExpression typeRef="string">mobility</inputExpression></input>
+      <input id="i4"><inputExpression typeRef="string">income_band</inputExpression></input>
+      <output id="o1" name="service_id" typeRef="string"/>
+      <output id="o2" name="flags" typeRef="string"/>
+      <!-- Example rules (expand as needed) -->
+      <rule>
+        <inputEntry>"3***"</inputEntry>
+        <inputEntry>"ar"</inputEntry>
+        <inputEntry>"limited"</inputEntry>
+        <inputEntry>"low"</inputEntry>
+        <outputEntry>"svc_fooda_001"</outputEntry>
+        <outputEntry>"offer_interpreter,step_free_access"</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

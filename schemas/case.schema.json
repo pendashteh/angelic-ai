@@ -1,0 +1,25 @@
+{
+  "$id": "https://example.org/case.schema.json",
+  "type": "object",
+  "required": ["id", "persons", "issues", "events"],
+  "properties": {
+    "id": {"type": "string"},
+    "persons": {"type": "array", "items": {"type": "string"}},
+    "issues": {"type": "array", "items": {"type": "string"}},
+    "resources": {"type": "array", "items": {"type": "object"}},
+    "events": {"type": "array", "items": {"$ref": "#/$defs/Event"}},
+    "agents": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "Event": {
+      "type": "object",
+      "required": ["type", "timestamp", "agent"],
+      "properties": {
+        "type": {"enum": ["booking_requested","booking_confirmed","reminder_sent","handoff_started","handoff_completed"]},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "agent": {"type": "string"},
+        "resource_delta": {"type": "object"}
+      }
+    }
+  }
+}

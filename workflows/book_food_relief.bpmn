@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="bpmn_book_001">
+  <process id="book_food_relief" isExecutable="true">
+    <startEvent id="start" name="Start"/>
+    <task id="collectConsents" name="Collect consents"/>
+    <exclusiveGateway id="g1"/>
+    <task id="lookupServices" name="Lookup eligible services"/>
+    <task id="offerInterpreter" name="Offer interpreter/relay"/>
+    <task id="bookSlot" name="Book slot via adapter"/>
+    <task id="sendConfirm" name="Send confirmation + GTFS directions"/>
+    <endEvent id="end" name="Done"/>
+    <!-- Sequence flow (abbrev) -->
+  </process>
+</definitions>

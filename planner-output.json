@@ -1,0 +1,27 @@
+{
+  "$schema": "https://example.org/plan.schema.json",
+  "plan_id": "plan_7f3",
+  "case_id": "case_123",
+  "steps": [
+    {
+      "id": "s1",
+      "action": "mcp.call",
+      "server": "svc-directory",
+      "tool": "search_services",
+      "args": {"postcode": "3000", "need": "food_relief"},
+      "pre": ["consent.allow(purpose=book_food_relief)"],
+      "post": ["eligibleServices.length > 0"],
+      "explain": true
+    },
+    {
+      "id": "s2",
+      "action": "a2a.request",
+      "to_agent": "councilX.bookings",
+      "intent": "hold_slot",
+      "args": {"service_id": "svc_fooda_001", "window": "next_48h"},
+      "pre": ["guardrails.no_pii_egress"],
+      "confirm_required": true
+    }
+  ],
+  "budgets": {"time_s": 300, "money_cents": 0}
+}

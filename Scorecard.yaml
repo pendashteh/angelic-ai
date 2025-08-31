@@ -1,0 +1,25 @@
+pack: food-relief.vic@0.3.0
+tests:
+  unit: 48/48 pass
+  property: 30/30 pass
+  fairness_personas: 60/60 pass
+coverage:
+  rules: 92%
+  paths: 88%
+data_freshness:
+  datasets:
+    - id: data.gov.au/dataset/food-services-vic
+      last_updated: 2025-07-30
+      staleness_days: 31
+      status: needs_refresh
+risks:
+  - type: data_staleness
+    severity: medium
+    remediation: "Re-crawl dataset and re-run fairness suite"
+signatures:
+  maintainer: verified(sigstore)
+conformance:
+  agntcy: true
+  a2a: v0.2.6
+  mcp: v1
+  rac: true

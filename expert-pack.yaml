@@ -1,0 +1,43 @@
+name: food-relief.vic
+version: 0.3.0
+jurisdiction: AU-VIC
+license: MPL-2.0
+description: >
+  Eligibility and booking workflows for food relief services in Victoria.
+maintainers:
+  - org: linux-victoria
+    contact: ops@linuxvictoria.org
+standards:
+  agntcy: true
+  a2a: v0.2.6
+  mcp: v1
+  rac: true
+artifacts:
+  dmn:
+    - rules/eligibility.dmn
+  rego:
+    - policies/consent.rego
+    - policies/guardrails.rego
+  bpmn:
+    - workflows/book_food_relief.bpmn
+  schemas:
+    - schemas/case.schema.json
+    - schemas/booking.intent.schema.json
+  prompts:
+    - prompts/planner.md
+  tests:
+    - tests/personas.yaml
+    - tests/property.yaml
+adapters:
+  - id: bookings.councilX
+    type: http
+    openapi: adapters/councilX.openapi.yaml
+  - id: transport.gtfs
+    type: mcp
+    server: mcp://gtfs.local
+signatures:
+  pack: sigstore:…   # detached signature
+provenance:
+  datasets:
+    - id: data.gov.au/dataset/food-services-vic
+      last_checked: 2025-08-20
